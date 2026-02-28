@@ -68,13 +68,13 @@ function LevelSetup() {
       setCustomGoal('Sign them up for the app waitlist');
       setIdea('social network to connect dog-lovers on play dates');
     } else if (presetName === 'umass') {
-      setFounderName('Your Name');
+      setFounderName('Varshini');
       setCustomCharacter(`Shanyu, early stage startup founder and UMass Alumni. BEHAVIOR: You MUST start the conversation with friendly small talk about UMass (e.g. "How is your course work?", "How is the weather on campus?"). Then, after they pitch, you must aggressively challenge the idea. Argue that online assessments and take-home projects are better, and point out that GitHub/LinkedIn profiles can easily be faked or exaggerated. Say: "Why should I use your platform for this?" and "I don't really think you are clear on why you are building this."`);
       setCustomEnvironment('University cafe (Roots Cafe or similar)');
       setCustomGoal('Get feedback on the product and see if they would use it for screening candidates');
       setIdea('A credibility-first opportunity matchmaker platform that builds a robust knowledge graph of candidates based on GitHub repos, LinkedIn, online portfolios to screen candidates better than online assessments.');
     } else if (presetName === 'linkedin') {
-      setFounderName('Your Name');
+      setFounderName('Varshini');
       setCustomCharacter('A tech recruiter looking for top talent on LinkedIn or a virtual networking event.');
       setCustomEnvironment('A virtual networking event or LinkedIn message thread.');
       setCustomGoal('Get them to agree that a unified credibility graph is better than standard resumes, and agree to beta test it.');
