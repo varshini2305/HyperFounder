@@ -67,4 +67,4 @@ VITE_ELEVENLABS_API_KEY="your_elevenlabs_key" # optional; app falls back to brow
 
 ## License
 
-Open-source for hackathon review. Add a license file if you plan to maintain this long-term.
+To Be Decided.
