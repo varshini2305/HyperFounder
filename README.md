@@ -1,16 +1,70 @@
-# React + Vite
+# HyperFounder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+HyperFounder is a premium web app MVP that helps early-stage founders get an edge in the moments that matter: pitching their idea to investors, customers, mentors, or advisors in realistic, high-pressure contexts.
 
-Currently, two official plugins are available:
+Building an MVP is getting easier every day. The bottleneck is problem discovery + communication: can you clearly explain what you're building, handle pushback, and extract truth (not compliments) when you get a chance conversation, warm intro, or quick meeting?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+HyperFounder turns those rare, high-stakes interactions into repeatable reps with realistic AI personas, voice + chat interaction, and structured post-session feedback.
 
-## React Compiler
+## What You Can Do
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Generate a detailed roleplay scenario (persona + environment) with difficulty levels (friendly -> skeptical -> shark).
+- Enter your own startup idea or generate a random, challenging idea to pitch on the spot.
+- Run a live simulation via text chat and/or microphone input.
+- Hear the persona speak back using ElevenLabs TTS (with browser fallback).
+- End the session and get a "Mission Report" scored with actionable feedback grounded in frameworks like The Mom Test.
 
-## Expanding the ESLint configuration
+## How The App Works (User Flow)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Landing page -> Start Simulation
+2. Setup -> enter founder name, idea (or random idea), optional custom persona + environment, choose difficulty
+3. Simulation room -> AI opens the conversation, you respond, AI pushes back in character
+4. Feedback room -> score + strengths + improvements + key takeaway
+
+## Tech Stack
+
+- Frontend: React + Vite, React Router
+- UI: Vanilla CSS design system (dark mode, glassmorphism, gradients, micro-animations)
+- AI (text): Google Gemini API via `@google/genai`
+  - Scenario generation / random idea / evaluation: `gemini-2.5-flash`
+  - Live roleplay chat: `gemini-2.5-pro`
+- Voice (TTS): ElevenLabs Text-to-Speech API (optional), with Web Speech API fallback
+- Voice (input): Browser SpeechRecognition (when supported)
+
+## Code Map (Where To Look)
+
+- Core UI + routing: `src/App.jsx`
+- Gemini + ElevenLabs integration: `src/services/gemini.js`
+
+## Running Locally
+
+Prereqs: Node.js + npm.
+
+```bash
+npm install
+npm run dev
+```
+
+Create a `.env` file (do not commit it):
+
+```bash
+VITE_GEMINI_API_KEY="your_gemini_key"
+VITE_ELEVENLABS_API_KEY="your_elevenlabs_key" # optional; app falls back to browser speech
+```
+
+## Notes / Limitations (MVP)
+
+- No persistence yet: scenarios + chat history live in memory for the session.
+- API keys are currently used from the client. For production, put Gemini/ElevenLabs behind a backend/proxy to protect keys and enforce rate limits.
+- "Establishing shot" generated video (Veo) is part of the roadmap but not implemented in this repo yet.
+
+## Roadmap Ideas (From The Implementation Plan)
+
+- "User memory": track recurring weaknesses and personalize training over time
+- Asynchronous establishing-shot video generation for the persona/environment (Veo)
+- More scenario packs: customer discovery calls, enterprise procurement, technical advisor grilling, demo-day VC, etc.
+- Secure backend/proxy for AI calls + optional persistence
+
+## License
+
+Open-source for hackathon review. Add a license file if you plan to maintain this long-term.
